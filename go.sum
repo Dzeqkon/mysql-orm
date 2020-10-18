@@ -1,6 +1,0 @@
-github.com/Dzeqkon/go-utils v0.0.0-20201018132256-67f695154657 h1:6/zLIVhb8V3erx+i/8wiy34z6/UNWnKiIgyCKzBhj+k=
-github.com/Dzeqkon/go-utils v0.0.0-20201018132256-67f695154657/go.mod h1:0Jtz5ft3yKl/Htc6IDLtwxb5KKiByVzAjjOECzHyT9c=
-github.com/Dzeqkon/goutils v0.0.0-20201018144626-0fdfcc7178b5 h1:+Qj9FoKe5cbO549xPv5XEI3fI0i3Cip574uFbvYaZrY=
-github.com/Dzeqkon/goutils v0.0.0-20201018144626-0fdfcc7178b5/go.mod h1:ntBRVcFNWF0tdYozOhW4QvOA5V+utA0niHFRmA+YeOY=
-github.com/go-sql-driver/mysql v1.5.0 h1:ozyZYNQW3x3HtqT1jira07DN2PArx2v7/mN66gGcHOs=
-github.com/go-sql-driver/mysql v1.5.0/go.mod h1:DCzpHaOWr8IXmIStZouvnhqoel9Qv2LBy8hT2VhHyBg=
