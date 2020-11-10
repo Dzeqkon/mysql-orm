@@ -7,8 +7,8 @@
 ### Installation
 
 ```
-$ go get -u github.com/typa01/go-utils
-$ go get -u github.com/typa01/go-mysql-utils
+$ go get -u github.com/Dzeqkon/goutils
+$ go get -u github.com/Dzeqkon/mysql-orm
 ```
 
 ### Usage
@@ -17,13 +17,13 @@ $ go get -u github.com/typa01/go-mysql-utils
 
 ```
 func TestDbClient() *DBClient {
-	var dbConfig tsgmysqlutils.DBConfig
+	var dbConfig dzgmysql.DBConfig
 	dbConfig.DbHost = "127.0.0.1"
 	dbConfig.DbUser = "root"
 	dbConfig.DbPass = "123456"
 	dbConfig.IsLocalTime = true
 	dbConfig.DbName = "test"
-	return tsgmysqlutils.NewDbClient(dbConfig)
+	return dzgmysql.NewDbClient(dbConfig)
 }
 ```
 
@@ -32,10 +32,10 @@ func TestDbClient() *DBClient {
 ```
 func TestGenerateORM(t *testing.T) {
 	client := TestDbClient()
-	orm := tsgmysqlutils.NewORMGenerator(client)
+	orm := dzgmysql.NewORMGenerator(client)
 	orm.AddComment = true
 	tabNames := []string{"we_test_tab1", "we_test_tab2"}
-	orm.DefaultGenerator(tabNames)
+	orm.DefaultGenerators(tabNames)
 	client.CloseConn()
 }
 ```
