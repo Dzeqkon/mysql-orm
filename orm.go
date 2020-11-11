@@ -417,8 +417,13 @@ var DBGoTypes = map[string]string{
 
 type ORMBase interface {
 	RowToStruct(row *db.Row) error
+}
+
+type ORMBases interface {
+	RowToStruct(row *db.Row) error
 	RowsToStruct(rows *db.Rows) error
 }
+
 
 var ORMTabsCols []ORMTable
 var warmTips dzgutils.InterfaceBuilder
