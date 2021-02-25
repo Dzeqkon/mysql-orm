@@ -3,6 +3,7 @@ package dzgmysql
 import (
 	db "database/sql"
 	"github.com/Dzeqkon/goutils"
+	"fmt"
 )
 
 /*
@@ -60,8 +61,10 @@ func (orm *ORMGenerator) DefaultGenerators(tabName []string) {
 
 func (orm *ORMGenerator) ORMBuilder(tabName string) {
 	warmTips.Append("// The generated tabs: ")
+	fmt.Println("====",len(ORMTabsCols))
 	for i := range ORMTabsCols {
 		ORMTab := ORMTabsCols[i]
+		fmt.Println("====",ORMTab.TName)
 		if ORMTab.TName == tabName {
 			orm.buildORMStruct(tabName, ORMTab, orm.AddComment)
 			orm.buildORMSqlSelect(tabName, ORMTab.TColumns)
@@ -76,10 +79,13 @@ func (orm *ORMGenerator) ORMBuilder(tabName string) {
 
 func (orm *ORMGenerator) ORMBuilders(tabNames []string) {
 	warmTips.Append("// The generated tabs: ")
+	fmt.Println("====s",len(ORMTabsCols))
 	for i := range ORMTabsCols {
 		tabName := tabNames[i]
+		fmt.Println("====sname",tabName)
 		for j := range ORMTabsCols {
 			ORMTab := ORMTabsCols[j]
+			fmt.Println("====sname",ORMTab.TName)
 			if ORMTab.TName == tabName {
 				orm.buildORMStruct(tabName, ORMTab, orm.AddComment)
 				orm.buildORMSqlSelect(tabName, ORMTab.TColumns)
