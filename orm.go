@@ -50,31 +50,41 @@ func (orm *ORMGenerator) DefaultGenerator(tabName string) {
 	orm.ORMBuilder(tabName)
 	dzgutils.Stdout(warmTips.ToInterfaces()...)
 }
-func (orm *ORMGenerator) DefaultGenerators(tabName []string) {
-	orm.getDbInfo()
-	warmTips.Append("\n\n")
-	orm.buildORMImport()
-	orm.ORMBuilders(tabName)
-	dzgutils.Stdout(warmTips.ToInterfaces()...)
-}
 
 func (orm *ORMGenerator) ORMBuilder(tabName string) {
 	warmTips.Append("// The generated tabs: ")
 	for i := range ORMTabsCols {
 		ORMTab := ORMTabsCols[i]
 		if ORMTab.TName == tabName {
-			//======================
-			//生成相应方法，作为参考
 			orm.buildORMStruct(tabName, ORMTab, orm.AddComment)
 			orm.buildORMSqlSelect(tabName, ORMTab.TColumns)
 			orm.buildORMSqlInsert(tabName)
 			orm.buildORMSqlUpdate(tabName)
 			orm.buildORMSqlDelete(tabName)
 			orm.buildORMSqlBatchInsert(tabName)
-			//=========================
 		}
 	}
 	warmTips.Append("\n")
+}
+
+func (orm *ORMGenerator) ChekTable(tabName string) (result bool){
+	for i := range ORMTabsCols {
+		ORMTab := ORMTabsCols[i]
+		if ORMTab.TName == tabName {
+			result=true
+		}else {
+			result=false
+		}
+	}
+	return
+}
+
+func (orm *ORMGenerator) DefaultGenerators(tabName []string) {
+	orm.getDbInfo()
+	warmTips.Append("\n\n")
+	orm.buildORMImport()
+	orm.ORMBuilders(tabName)
+	dzgutils.Stdout(warmTips.ToInterfaces()...)
 }
 
 func (orm *ORMGenerator) ORMBuilders(tabNames []string) {
@@ -94,6 +104,23 @@ func (orm *ORMGenerator) ORMBuilders(tabNames []string) {
 		}
 	}
 	warmTips.Append("\n")
+}
+
+func (orm *ORMGenerator) ChecKTables(tabNames []string) (result []bool){
+	orm.getDbInfo()
+	for i := range tabNames {
+		tabName := tabNames[i]
+		rs :=false
+		for j := range ORMTabsCols {
+			ORMTab := ORMTabsCols[j]
+			if ORMTab.TName == tabName {
+				rs =true
+				break
+			}
+		}
+		result =append(result,rs)
+	}
+	return
 }
 
 func (orm *ORMGenerator) buildORMImport() {
@@ -173,6 +200,7 @@ func (orm *ORMGenerator) buildORMSqlSelect(tabName string, cols []ORMColumn) {
 	funcRowBuilder.Append("\t").Append("}").Append("\n")
 	funcRowBuilder.Append("\t").Append("return nil").Append("\n")
 	funcRowBuilder.Append("}").Append("\n")
+
 	dzgutils.Stdout(funcRowBuilder.ToString())
 
 	// builder this table's select rows function
