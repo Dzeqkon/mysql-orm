@@ -10,15 +10,15 @@ import (
 /*
  MySQL client
   Usage:
-    var dbConfig tsgmysqlutils.DBConfig
+    var dbConfig dzgmysql.DBConfig
 	dbConfig.DbHost = "127.0.0.1"
 	dbConfig.DbUser = "root"
 	dbConfig.DbPass = "123456"
 	dbConfig.IsLocalTime = true
 	dbConfig.DbName = "test"
-	client := tsgmysqlutils.NewDbClient(dbConfig)
+	client := dzgmysql.NewDbClient(dbConfig)
 
-   @author Tony Tian
+   @author Dzeqkon
    @date 2018-04-16
    @version 1.0.0
 */
