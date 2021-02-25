@@ -100,7 +100,7 @@ func (orm *ORMGenerator) buildORMImport() {
 	importBuilder.Append("\t").Append("\"errors\"").Append("\n")
 	importBuilder.Append("\t").Append("\"reflect\"").Append("\n")
 	importBuilder.Append("\t").Append("db \"database/sql\"").Append("\n")
-	importBuilder.Append("\t").Append("\"github.com/timespacegroup/go-utils\"").Append("\n")
+	importBuilder.Append("\t").Append("\"github.com/Dzeqkon/goutils\"").Append("\n")
 	importBuilder.Append(")").Append("\n")
 	dzgutils.Stdout(importBuilder.ToString())
 }
