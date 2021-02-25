@@ -9,7 +9,7 @@ package dzgmysql
 
 import (
 	"errors"
-	"github.com/Dzeqkon/go-utils"
+	"github.com/Dzeqkon/goutils"
 	"testing"
 	"time"
 )
