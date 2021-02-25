@@ -43,6 +43,7 @@ func NewORMGenerator(client *DBClient) *ORMGenerator {
 	return &orm
 }
 
+//从数据库中的表生成相应的实体类，及orm方法（增、删、改、查）
 func (orm *ORMGenerator) DefaultGenerator(tabName string) {
 	orm.getDbInfo()
 	warmTips.Append("\n\n")
