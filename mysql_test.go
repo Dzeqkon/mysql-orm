@@ -2,7 +2,7 @@ package dzgmysql
 
 /*
  MySQL utils test
- @author Tony Tian
+ @author Dzeqkon
  @date 2018-04-16
  @version 1.0.0
 */
