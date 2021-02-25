@@ -63,12 +63,15 @@ func (orm *ORMGenerator) ORMBuilder(tabName string) {
 	for i := range ORMTabsCols {
 		ORMTab := ORMTabsCols[i]
 		if ORMTab.TName == tabName {
+			//======================
+			//生成相应方法，作为参考
 			orm.buildORMStruct(tabName, ORMTab, orm.AddComment)
 			orm.buildORMSqlSelect(tabName, ORMTab.TColumns)
 			orm.buildORMSqlInsert(tabName)
 			orm.buildORMSqlUpdate(tabName)
 			orm.buildORMSqlDelete(tabName)
 			orm.buildORMSqlBatchInsert(tabName)
+			//=========================
 		}
 	}
 	warmTips.Append("\n")
